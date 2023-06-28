@@ -181,7 +181,7 @@ av_get <- function(symbol, av_fun, ...) {
     } else {
         # CSV Returned - Good Call - Time Series CSV file
         content <- httr::content(response, as = "text", encoding = "UTF-8") %>%
-            readr::read_csv()
+            readr::read_csv(show_col_types = FALSE)
 
     }
 

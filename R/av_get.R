@@ -109,6 +109,7 @@ av_get <- function(symbol, av_fun, ...) {
     url <- glue::glue("https://www.alphavantage.co/query?function={av_fun}&{url_params}")
 
     # Alpha Advantage API call
+    httr::handle_reset(url) # Disable HTTP Keep-Alives as the server drops them.
     response <- httr::GET(url, ua)
 
     # Handle bad status codes errors
